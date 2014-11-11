@@ -16,9 +16,10 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install squid3 && apt-get clean
 
 ADD squid.conf /etc/squid/squid.conf
-ADD start.sh /start.sh
+ADD start_squid.sh /etc/service/squid/run
 
 EXPOSE 3128
 VOLUME ["/var/spool/squid3"]
 
-CMD ["/start.sh"]
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
