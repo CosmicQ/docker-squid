@@ -14,10 +14,10 @@ to change the port on the host.
 ## Show me
 
 To simple run this on the default port
-  $ docker run -d -p 3128:3128 cosmicq/docker-squid 
+    $ docker run -d -p 3128:3128 cosmicq/docker-squid 
 
 But is you want to change the proxy to port 80, the simply run
-  $ docker run -d -p 80:3128 cosmicq/docker-squid
+    $ docker run -d -p 80:3128 cosmicq/docker-squid
 
 ## Configure for your network
 
@@ -26,8 +26,15 @@ network.  The default network is "192.168.0.0/16".  This is expressed
 with two environment variables $NET and $CIDR.  To change the config, simply
 add these variables to the run command like this
 
- $ docker run -d -p 3128:3128 --env NET=10.0.1.0 --env CIDR=24 cosmicq/docker-squid
+    $ docker run -d -p 3128:3128 --env NET=10.0.1.0 --env CIDR=24 cosmicq/docker-squid
 
 This will allow squid to proxy for the 10.0.1.0 network with a mask of 255.255.255.0.
+
+If you specify only the "NET" environment variable, it will be treated like an IP address
+meaning that only the IP addresses specified will be allowed to proxy traffic.
+
+    $ docker run -d -p 3128:3128 --env NET=192.168.1.42 cosmicq/docker-squid
+
+This command will only allow the IP address 192.168.1.42 to proxy traffic.
 
 Enjoy!
