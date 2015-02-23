@@ -2,7 +2,7 @@
 #
 # A VERY simple squid proxy server.
 
-FROM phusion/baseimage:0.9.15
+FROM phusion/baseimage:0.9.16
 MAINTAINER CosmicQ <cosmicq@cosmicegg.net>
 
 ENV HOME /root
